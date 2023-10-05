@@ -36,7 +36,9 @@ def open_calendar_list_view(driver : DriverWrapper):
 def open_self_registration(driver : DriverWrapper): 
     driver.get('https://via.itslearning.com/Calendar/Schedule.aspx')
     
-    wait_for_element(driver, By.XPATH, "//*[contains(text(), 'SELF-REGISTRATION')]", refresh=True)
+    # --- This is a hack ---
+    # --- There are two elements with the same text so that is why i select other text ---
+    wait_for_element(driver, By.XPATH, "//*[contains(text(), 'SELF-REGISTRATION')]",timeout=-1, refresh=True)
     wait_for_element(driver, By.XPATH, "//*[contains(text(), 'Register presence')]").click()
 
 def crack_registration_code(driver : DriverWrapper):
