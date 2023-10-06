@@ -1,6 +1,8 @@
 from typing import Dict
 from selenium.webdriver import Chrome, Safari, Firefox, Ie, Edge
+from selenium.webdriver.chrome.options import Options
 from utils.toml_helper import config
+
 
 class DriverWrapper(Chrome,Safari,Firefox,Ie,Edge):
  
@@ -9,7 +11,11 @@ class DriverWrapper(Chrome,Safari,Firefox,Ie,Edge):
     
     def _create_driver(self, id:str):
         if config['driver']['browser'] == 'chrome':
-            self.drivers[id] = Chrome()
+            options = Options()
+            if config['driver']['headless'] :
+                options.add_argument("--headless")
+            self.drivers[id] = Chrome(options=options)
+
         elif config['driver']['browser'] == 'safari':
             self.drivers[id] = Safari()
         elif config['driver']['browser'] == 'firefox':

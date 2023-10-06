@@ -13,7 +13,6 @@ def wait_for_element(driver : DriverWrapper, by : By, value : str, timeout : int
             element = driver.find_element(by=by, value=value)
             return element
         except Exception as e:
-            print(e.__str__())
             time.sleep(1)
             timeout -= 1
             if refresh:
@@ -21,12 +20,16 @@ def wait_for_element(driver : DriverWrapper, by : By, value : str, timeout : int
     raise Exception('Element not found')
 
 def queue_for_presence(driver : DriverWrapper, code_start : int = 0 , code_end : int = 10*1000 , repeat : int = 1, inform_about_registration : bool = False):
+    print("Logging in")
     login_to_itslearning(driver)
+    print("Opening calendar list view")
     open_calendar_list_view(driver) 
+    print("Opening self registration")
     open_self_registration(driver)
     if inform_about_registration:
         print("Registration started")
         return True
+    print("Cracking registration code")
     crack_registration_code(driver)
     return False
 
