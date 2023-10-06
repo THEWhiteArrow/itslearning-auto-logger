@@ -2,7 +2,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 from selenium_driver.driver import DriverWrapper
-from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.remote.webelement import WebElement 
 
 from utils.toml_helper import config
 from utils.utils import parse_number_to_password
@@ -19,6 +19,16 @@ def wait_for_element(driver : DriverWrapper, by : By, value : str, timeout : int
             if refresh:
                 driver.refresh()
     raise Exception('Element not found')
+
+def queue_for_presence(driver : DriverWrapper, code_start : int = 0 , code_end : int = 10*1000 , repeat : int = 1, inform_about_registration : bool = False):
+    login_to_itslearning(driver)
+    open_calendar_list_view(driver) 
+    open_self_registration(driver)
+    if inform_about_registration:
+        print("Registration started")
+        return True
+    crack_registration_code(driver)
+    return False
 
 def login_to_itslearning(driver : DriverWrapper):
     driver.get("https://via.itslearning.com/")
