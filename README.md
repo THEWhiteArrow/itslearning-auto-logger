@@ -27,8 +27,8 @@ Remember to respect the terms of service and policies of Itslearning and other p
 2. Put the `config.toml`` file in the root of the project.
 3. Name it `config.toml``.
 4. Fill in the required information.
-   A. The ` username`` is the username you use to log into itslearning.
-B. The  `password`` is the password you use to log into itslearning.
+5. The `username` is the username you use to log into itslearning.
+6. The `password` is the password you use to log into itslearning.
 
 ## Contribution
 
