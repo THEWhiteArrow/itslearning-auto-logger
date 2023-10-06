@@ -99,6 +99,7 @@ def crack_registration_code(driver : DriverWrapper, code_start:int = 0, code_end
     @param code_end: The end of the code range.
     @param repeat: How many times to repeat the cycle.
     """
+    
     wait_for_element(driver, By.ID, 'code').click()
 
     actions = ActionChains(driver)
