@@ -4,5 +4,5 @@ password="<my_password>"
 
 [driver]
 browser="chrome"
-headless=true
+headless=false
 count=15
