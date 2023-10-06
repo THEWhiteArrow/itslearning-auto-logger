@@ -4,6 +4,10 @@ from selenium_driver.driver import drivers
 from utils.toml_helper import config
 
 def main():
+    """
+    This is the main function of the program. It loads the drivers, wait for registration to open and starts the threads.
+    It has to phases. First phase is to wait for registration to open. Second phase is to crack the registration code.
+    """
     print('Auto logger engaging...')
 
     driver_main = drivers.get_driver('main')

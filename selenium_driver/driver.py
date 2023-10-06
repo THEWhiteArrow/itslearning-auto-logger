@@ -5,11 +5,16 @@ from utils.toml_helper import config
 
 
 class DriverWrapper(Chrome,Safari,Firefox,Ie,Edge):
- 
+    """
+    Wrapper for selenium drivers. Acts as a multiton.
+    """
     def __init__(self):
         self.drivers : Dict = {}
     
     def _create_driver(self, id:str):
+        """
+        Creates a driver by id.
+        """
         if config['driver']['browser'] == 'chrome':
             options = Options()
             if config['driver']['headless'] :
@@ -28,6 +33,9 @@ class DriverWrapper(Chrome,Safari,Firefox,Ie,Edge):
             raise Exception('Browser not supported')
 
     def get_driver(self, id:str):
+        """
+        Gets a driver by id.
+        """
         if id not in self.drivers:
             self._create_driver(id)
         return self.drivers[id]
