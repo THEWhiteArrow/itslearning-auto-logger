@@ -38,8 +38,10 @@ def open_self_registration(driver : DriverWrapper):
     
     # --- This is a hack ---
     # --- There are two elements with the same text so that is why i select other text ---
-    wait_for_element(driver, By.XPATH, "//*[contains(text(), 'SELF-REGISTRATION')]",timeout=-1, refresh=True)
-    wait_for_element(driver, By.XPATH, "//*[contains(text(), 'Register presence')]").click()
+    # wait_for_element(driver, By.XPATH, "//*[contains(text(), 'SELF-REGISTRATION')]",timeout=-1, refresh=True)
+    # wait_for_element(driver, By.XPATH, "//*[contains(text(), 'Register presence')]").click()
+
+    wait_for_element(driver, By.CSS_SELECTOR, 'button.ccl-button.ccl-button-color-green[aria-label="Register presence"]', refresh=True, timeout=-1).click()
 
 def crack_registration_code(driver : DriverWrapper):
     wait_for_element(driver, By.ID, 'code').click()
