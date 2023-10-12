@@ -7,7 +7,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from utils.toml_helper import config
 from utils.utils import parse_number_to_password
 
-def wait_for_element(driver : DriverWrapper, by : By, value : str, timeout : int = 10, refresh : bool = False) -> WebElement:
+def wait_for_element(driver : DriverWrapper, by : By, value : str, timeout : int = 20, refresh : bool = False) -> WebElement:
     """
     Waits for the element to appear on the page. 
     @param driver: The selenium driver.
@@ -20,13 +20,17 @@ def wait_for_element(driver : DriverWrapper, by : By, value : str, timeout : int
 
     while timeout > 0 or (timeout < 0 and timeout > -60*60*24):
         try:
+            
             element = driver.find_element(by=by, value=value)
             return element
         except Exception as e:
-            time.sleep(1)
-            timeout -= 1
             if refresh:
                 driver.refresh()
+                time.sleep(2)
+            else:
+                time.sleep(1)
+            timeout -= 1
+
     raise Exception('Element not found')
 
 def queue_for_presence(driver : DriverWrapper, code_start : int = 0 , code_end : int = 10*1000 , repeat : int = 1, inform_about_registration : bool = False) -> bool:

@@ -23,12 +23,12 @@ def main():
                 driver,
                 10*1000//15*i, 
                 10*1000//15*(i+1), 
-                2
+                5
             )
         ).start()
 
         # Allows time for previous thread to load and execute necessary setup
-        time.sleep(2)
+        time.sleep(1)
  
 
     
