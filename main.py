@@ -1,4 +1,5 @@
 from threading import Thread
+import time
 from itslearning_auto_logger.logger import queue_for_presence
 from selenium_driver.driver import drivers
 from utils.toml_helper import config
@@ -24,6 +25,9 @@ def main():
                 2
             )
         ).start()
+
+        # Allows time for previous thread to load and execute necessary setup
+        time.sleep(2)
  
 
     
