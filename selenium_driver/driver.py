@@ -32,7 +32,8 @@ class DriverWrapper(Chrome,Safari,Firefox,Ie,Edge):
         else:
             raise Exception('Browser not supported')
 
-    def get_driver(self, id:str):
+    
+    def get_driver(self, id:str) -> Chrome | Safari | Firefox | Ie | Edge:
         """
         Gets a driver by id.
         """

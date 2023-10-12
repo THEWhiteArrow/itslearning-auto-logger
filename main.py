@@ -13,7 +13,8 @@ def main():
 
     driver_main = drivers.get_driver('main')
     queue_for_presence(driver_main, inform_about_registration=True)
-
+    driver_main.quit()
+    
     for i in range(0, config['driver']['count']):
         driver = drivers.get_driver(f"driver{i}") 
         Thread(
