@@ -47,7 +47,7 @@ def queue_for_presence(driver : DriverWrapper, code_start : int = 0 , code_end :
     print("Logging in")
     login_to_itslearning(driver)
     print("Opening calendar list view")
-    open_calendar_list_view(driver) 
+    open_calendar_day_view(driver) 
     print("Opening self registration")
     open_self_registration(driver)
     if inform_about_registration:
@@ -70,14 +70,14 @@ def login_to_itslearning(driver : DriverWrapper):
     wait_for_element(driver, By.ID, 'nsg-x1-logon-button').click()
     wait_for_element(driver, By.ID, "pm-user-status-image")
 
-def open_calendar_list_view(driver : DriverWrapper):
+def open_calendar_day_view(driver : DriverWrapper):
     """
-    Opens the calendar list view.
+    Opens the calendar day view.
     @param driver: The selenium driver.
     """
 
     driver.get('https://via.itslearning.com/Calendar/Schedule.aspx')
-    wait_for_element(driver, By.XPATH, "//*[contains(text(), 'List')]").click()
+    wait_for_element(driver, By.XPATH, "//*[contains(text(), 'Day')]").click()
     wait_for_element(driver, By.ID, 'ctl00_PageHeader_TT')
 
 def open_self_registration(driver : DriverWrapper): 
