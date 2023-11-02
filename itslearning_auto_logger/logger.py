@@ -87,7 +87,8 @@ def open_self_registration(driver : DriverWrapper):
     """
 
     driver.get('https://via.itslearning.com/Calendar/Schedule.aspx')
-    wait_for_element(driver, By.CSS_SELECTOR, 'button.ccl-button.ccl-button-color-green[aria-label="Register presence"]', refresh=True, timeout=-1).click()
+    # idk
+    wait_for_element(driver, By.CSS_SELECTOR, 'button.prom-button.prom-button__primary', refresh=True, timeout=-1).click()
     
     # --- This is a hack ---
     # --- There are two elements with the same text so that is why i select other text ---
