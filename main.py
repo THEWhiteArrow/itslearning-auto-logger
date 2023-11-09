@@ -28,7 +28,6 @@ def main():
 
     driver_main = drivers.get_driver("main")
     queue_for_presence(driver_main, inform_about_registration=True)
-    driver_main.quit()
     create_in_threads()
 
 
